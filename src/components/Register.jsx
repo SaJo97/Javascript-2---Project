@@ -8,10 +8,10 @@ const Register = () => {
       <div className="wrapper">
         <Form />
       </div>
-      <div>
+      <div className="acc-con">
         <p>Already have an account?</p>
           <Link to="/login">
-            <button>
+            <button className="btn-acc">
               Login
             </button>
           </Link>

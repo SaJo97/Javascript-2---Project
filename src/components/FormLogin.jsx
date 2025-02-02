@@ -54,7 +54,7 @@ const FormLogin = () => {
         onBlur={handleBlur}
       />
 
-      <button type="submit" className="" disabled={loading}>
+      <button type="submit" className="btn-acc" disabled={loading}>
         {loading ? 'Logging in...' : 'Login'}
       </button>
     </form>

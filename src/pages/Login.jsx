@@ -8,10 +8,10 @@ const Login = () => {
       <div className="wrapper">
         <FormLogin />
       </div>
-      <div>
+      <div className="acc-con">
         <p>Don't have an account?</p>
         <Link to="/register">
-          <button>
+          <button className="btn-acc">
             Register
           </button>
         </Link>

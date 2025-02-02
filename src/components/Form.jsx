@@ -69,7 +69,7 @@ const Form = () => {
       />
 
 
-      <button type="submit" className="" disabled={loading}>
+      <button type="submit" className="btn-acc" disabled={loading}>
         {loading ? 'Registering...' : 'Register'}
       </button>
     </form>

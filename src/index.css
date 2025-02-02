@@ -417,3 +417,25 @@ footer {
   justify-content: space-between;
   flex-direction: column;
 }
+
+.acc-con{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btn-acc{
+  display: inline-block;
+  padding: 8px 15px;
+  font-size: 16px;
+  color: white;
+  background-color:#0d0d0d;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn-acc:hover {
+  background-color: #333333;
+}
