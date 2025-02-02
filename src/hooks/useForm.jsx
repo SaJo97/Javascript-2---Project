@@ -16,20 +16,20 @@ const useForm = (initialFormData) => {
     // Clear the error for the field being changed
     setErrors((prevErrors) => ({
       ...prevErrors,
-      [name]: '',
+      [name]: "",
     }));
   };
 
   const handleSubmit = (e) => {
     if (e) e.preventDefault(); // Prevent the default form submission behavior if the event is provided
-    console.log('Form data before validation:', form);
+    console.log("Form data before validation:", form);
 
     const isValid = validate(form, setErrors); // Validate the form
     if (!isValid) {
-      console.log('Validation failed');
+      console.log("Validation failed");
       return { success: false, errors }; // Return an object indicating failure
     }
-    console.log('Form data after validation:', form);
+    console.log("Form data after validation:", form);
     return { success: true, form }; // Return an object indicating success
   };
 

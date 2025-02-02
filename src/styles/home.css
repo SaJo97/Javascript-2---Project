@@ -1,25 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body{
+body {
   font-family: Poppins-regular, Poppins;
 }
 
-.home-page{
+.home-page {
   background-color: rgb(243, 242, 242);
-  
+
   text-align: center;
 
-  img{
+  img {
     width: 100%;
     object-fit: cover;
   }
-  .home-img{
+  .home-img {
     position: relative;
   }
   .home-text {
@@ -35,17 +35,18 @@ body{
     max-width: 100%;
     max-height: 100%;
   }
-  .home-text h1, .home-text h2 {
+  .home-text h1,
+  .home-text h2 {
     margin: 0;
   }
 }
-.home-products{
+.home-products {
   text-align: center;
   font-size: 32px;
   padding: 30px;
 }
 
-.product-card{
+.product-card {
   background-color: white;
   border-radius: 0.5rem;
   box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.1);
@@ -58,12 +59,11 @@ body{
   gap: 1.5rem;
   padding: 1.5rem;
 
-  a{
+  a {
     text-decoration: none;
     color: black;
   }
 }
-
 
 @media (max-width: 2000px) {
   .products-grid {
@@ -105,7 +105,7 @@ body{
   border-left: 1px solid rgb(231, 231, 231);
   border-top: 1px solid rgb(231, 231, 231);
   border-radius: 0.5rem;
-  
+
   display: flex;
   flex-direction: column;
 }
@@ -128,7 +128,6 @@ body{
 .product-name {
   height: 40px;
   margin-bottom: 5px;
-  
 }
 .product-name:hover {
   text-decoration: underline;
@@ -150,16 +149,16 @@ body{
   padding: 0.3rem;
 }
 
-.add-to-cart{
+.add-to-cart {
   width: 100%;
   padding: 8px;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   background-color: rgb(205, 173, 100);
   font-weight: 700;
   cursor: pointer;
 }
-.add-to-cart:hover{
-  background-color: hsl(54, 69.00%, 70%);
+.add-to-cart:hover {
+  background-color: hsl(54, 69%, 70%);
   color: rgb(235, 173, 16);
 }
 

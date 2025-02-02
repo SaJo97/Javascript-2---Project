@@ -1,6 +1,5 @@
-import {Link } from "react-router"
-import Form from "./Form"
-
+import { Link } from "react-router";
+import Form from "./Form";
 
 const Register = () => {
   return (
@@ -10,13 +9,11 @@ const Register = () => {
       </div>
       <div className="acc-con">
         <p>Already have an account?</p>
-          <Link to="/login">
-            <button className="btn-acc">
-              Login
-            </button>
-          </Link>
+        <Link to="/login">
+          <button className="btn-acc">Login</button>
+        </Link>
       </div>
     </div>
-  )
-}
-export default Register
+  );
+};
+export default Register;

@@ -1,77 +1,111 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
 // Async thunk for creating an order
-export const createOrder = createAsyncThunk('orders/createOrder', async (orderData, { getState, dispatch, rejectWithValue }) => {
-  const state = getState();
-  const token = state.auth.token; // Get the token from the auth state
+export const createOrder = createAsyncThunk(
+  "orders/createOrder",
+  async (orderData, { getState, dispatch, rejectWithValue }) => {
+    const state = getState();
+    const token = state.auth.token; // Get the token from the auth state
 
-  try {
-    const response = await axios.post('https://js2-ecommerce-api.vercel.app/api/orders', orderData, {
-      headers: {
-        Authorization: `Bearer ${token}`, // Include the token in the Authorization header
-      },
-    });
+    try {
+      const response = await axios.post(
+        "https://js2-ecommerce-api.vercel.app/api/orders",
+        orderData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // Include the token in the Authorization header
+          },
+        }
+      );
 
-    // Fetch orders again after creating a new order
-    dispatch(fetchOrders());
+      // Fetch orders again after creating a new order
+      dispatch(fetchOrders());
 
-    return response.data; // Return the response data
-  } catch (error) {
-    console.error('Order creation error:', error.response ? error.response.data : error.message);
-    return rejectWithValue(error.response ? error.response.data : 'Order creation failed');
+      return response.data; // Return the response data
+    } catch (error) {
+      console.error(
+        "Order creation error:",
+        error.response ? error.response.data : error.message
+      );
+      return rejectWithValue(
+        error.response ? error.response.data : "Order creation failed"
+      );
+    }
   }
-});
+);
 
 // Async thunk for fetching orders
-export const fetchOrders = createAsyncThunk('orders/fetchOrders', async (_, { getState, rejectWithValue }) => {
-  const state = getState();
-  const token = state.auth.token; // Get the token from the auth state
+export const fetchOrders = createAsyncThunk(
+  "orders/fetchOrders",
+  async (_, { getState, rejectWithValue }) => {
+    const state = getState();
+    const token = state.auth.token; // Get the token from the auth state
 
-  if (!token) {
-    return rejectWithValue('Unauthorized'); // Reject if no token is present
-  }
+    if (!token) {
+      return rejectWithValue("Unauthorized"); // Reject if no token is present
+    }
 
-  try {
-    const response = await axios.get('https://js2-ecommerce-api.vercel.app/api/orders', {
-      headers: {
-        Authorization: `Bearer ${token}`, // Include the token in the Authorization header
-      },
-    });
-    console.log('API Response fetchOrders:', response.data); // Log the API response
-    return response.data; // Return the response data
-  } catch (error) {
-    console.error('Fetch orders error:', error.response ? error.response.data : error.message);
-    return rejectWithValue(error.response ? error.response.data : 'Fetch orders failed');
+    try {
+      const response = await axios.get(
+        "https://js2-ecommerce-api.vercel.app/api/orders",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // Include the token in the Authorization header
+          },
+        }
+      );
+      console.log("API Response fetchOrders:", response.data); // Log the API response
+      return response.data; // Return the response data
+    } catch (error) {
+      console.error(
+        "Fetch orders error:",
+        error.response ? error.response.data : error.message
+      );
+      return rejectWithValue(
+        error.response ? error.response.data : "Fetch orders failed"
+      );
+    }
   }
-});
+);
 
 // Async thunk for fetching order details by ID
-export const fetchOrderById = createAsyncThunk('orders/fetchOrderById', async (orderId, { getState, rejectWithValue }) => {
-  const state = getState();
-  const token = state.auth.token; // Get the token from the auth state
+export const fetchOrderById = createAsyncThunk(
+  "orders/fetchOrderById",
+  async (orderId, { getState, rejectWithValue }) => {
+    const state = getState();
+    const token = state.auth.token; // Get the token from the auth state
 
-  if (!token) {
-    return rejectWithValue('Unauthorized'); // Reject if no token is present
-  }
+    if (!token) {
+      return rejectWithValue("Unauthorized"); // Reject if no token is present
+    }
 
-  try {
-    const response = await axios.get(`https://js2-ecommerce-api.vercel.app/api/orders/${orderId}`, {
-      headers: {
-        Authorization: `Bearer ${token}`, // Include the token in the Authorization header
-      },
-    });
-    console.log('API Response fetchOrderById:', response.data); // Log the API response
-    return response.data; // Return the response data
-  } catch (error) {
-    console.error('Fetch order by ID error:', error.response ? error.response.data : error.message);
-    return rejectWithValue(error.response ? error.response.data : 'Fetch order failed');
+    try {
+      const response = await axios.get(
+        `https://js2-ecommerce-api.vercel.app/api/orders/${orderId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // Include the token in the Authorization header
+          },
+        }
+      );
+      console.log("API Response fetchOrderById:", response.data); // Log the API response
+      return response.data; // Return the response data
+    } catch (error) {
+      console.error(
+        "Fetch order by ID error:",
+        error.response ? error.response.data : error.message
+      );
+      return rejectWithValue(
+        error.response ? error.response.data : "Fetch order failed"
+      );
+    }
   }
-});
+);
 
 // Create the order slice
 const orderSlice = createSlice({
-  name: 'orders',
+  name: "orders",
   initialState: {
     order: null,
     orders: [],
@@ -121,7 +155,7 @@ const orderSlice = createSlice({
         state.error = action.payload; // Set error message from the rejected action
         state.loading = false; // Set loading to false
       });
-  },  
+  },
 });
 
 // Export the clearError action

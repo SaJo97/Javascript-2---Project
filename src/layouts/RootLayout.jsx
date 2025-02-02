@@ -8,7 +8,7 @@ const RootLayout = () => {
     <Providers>
       <div id='root'>
         <Navbar />
-        {/* Gör en container för outlet kanske */}
+
         <main>
           <Outlet /> 
         </main>

@@ -1,12 +1,10 @@
-
-const Filter = ({selectedCategory, setSelectedCategory}) => {
-
+const Filter = ({ selectedCategory, setSelectedCategory }) => {
   const categoryMap = {
-    'All': 'All',
-    'TV': 'TV',
-    'Mobile Phones': 'mobiltelefoner',
-    'Laptops': 'laptop',
-    'Vacuum Cleaners': 'dammsugare'
+    All: "All",
+    TV: "TV",
+    "Mobile Phones": "mobiltelefoner",
+    Laptops: "laptop",
+    "Vacuum Cleaners": "dammsugare",
   };
 
   const categories = Object.keys(categoryMap);
@@ -26,6 +24,6 @@ const Filter = ({selectedCategory, setSelectedCategory}) => {
         ))}
       </select>
     </div>
-  )
-}
-export default Filter
+  );
+};
+export default Filter;

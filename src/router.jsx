@@ -21,50 +21,53 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path:'contacts',
-        element: <Contacts />
+        path: "contacts",
+        element: <Contacts />,
       },
       {
-        path:'product/:productId',
+        path: "product/:productId",
         element: <ProductDetails />,
       },
       {
-        path:'checkout',
-        element: <Cart />
+        path: "checkout",
+        element: <Cart />,
       },
       {
-        path:'login',
-        element: <Login />
+        path: "login",
+        element: <Login />,
       },
       {
-        path:'register',
-        element: <Register />
+        path: "register",
+        element: <Register />,
       },
       {
-        path:'account',
-        element:
+        path: "account",
+        element: (
           <ProtectedRoute>
             <Account />
-          </ProtectedRoute> 
+          </ProtectedRoute>
+        ),
       },
       {
-        path:'orderhistory',
-        element: 
+        path: "orderhistory",
+        element: (
           <ProtectedRoute>
             <OrderHistory />
           </ProtectedRoute>
+        ),
       },
       {
-        path: '/order/:id',
-        element: 
+        path: "/order/:id",
+        element: (
           <ProtectedRoute>
             <OrderInfo />
           </ProtectedRoute>
+        ),
       },
       {
-        path: '*', // Catch-all route for unknown paths
-        element: <NotFound /> // Render the NotFound component
-      }
-    ]
-  }
-])
+        path: "*", // Catch-all route for unknown paths
+        element: <NotFound />, // Render the NotFound component
+      },
+    ],
+  },
+]);

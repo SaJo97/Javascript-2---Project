@@ -1,21 +1,24 @@
-import { useDispatch } from "react-redux"
-import "../styles/cart.css"
-import { FaMinus, FaPlus, FaTrash } from "react-icons/fa"
-import { addToCart, removeItem, removeOne } from "../store/shoppingcart/shoppingCartSlice"
+import { useDispatch } from "react-redux";
+import "../styles/cart.css";
+import { FaMinus, FaPlus, FaTrash } from "react-icons/fa";
+import {
+  addToCart,
+  removeItem,
+  removeOne,
+} from "../store/shoppingcart/shoppingCartSlice";
 
-const CartItem = ({item}) => {
-
-  const dispatch = useDispatch()
+const CartItem = ({ item }) => {
+  const dispatch = useDispatch();
 
   const addOneToCart = () => {
-    dispatch(addToCart(item.product))
-  }
+    dispatch(addToCart(item.product));
+  };
   const removeOneFromCart = () => {
-    dispatch(removeOne(item.product._id))
-  }
+    dispatch(removeOne(item.product._id));
+  };
   const deleteItem = () => {
-    dispatch(removeItem(item.product._id))
-  }
+    dispatch(removeItem(item.product._id));
+  };
 
   return (
     <div className="cart-container">
@@ -25,10 +28,12 @@ const CartItem = ({item}) => {
         </div>
         <div>
           <p className="product-title-cart">{item.product.name}</p>
-          <p className="product-quantity">{item.quantity} x {item.product.price}kr</p>
+          <p className="product-quantity">
+            {item.quantity} x {item.product.price}kr
+          </p>
         </div>
       </div>
-  
+
       <div className="button-container-cart">
         <div>
           <button onClick={removeOneFromCart} className="button-cart">
@@ -44,5 +49,5 @@ const CartItem = ({item}) => {
       </div>
     </div>
   );
-}
-export default CartItem
+};
+export default CartItem;

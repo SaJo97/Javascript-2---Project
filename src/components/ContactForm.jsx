@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import '../styles/contact.css';
-import Modal from './Modal';
-import axios from 'axios';
+import React, { useState } from "react";
+import "../styles/contact.css";
+import Modal from "./Modal";
+import axios from "axios";
 const ContactForm = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -22,9 +22,9 @@ const ContactForm = () => {
 
   const validate = () => {
     let formErrors = {};
-    if (!formData.name) formErrors.name = 'Name is required';
-    if (!formData.email) formErrors.email = 'Email is required';
-    if (!formData.message) formErrors.message = 'Message is required';
+    if (!formData.name) formErrors.name = "Name is required";
+    if (!formData.email) formErrors.email = "Email is required";
+    if (!formData.message) formErrors.message = "Message is required";
     return formErrors;
   };
 
@@ -32,22 +32,26 @@ const ContactForm = () => {
     e.preventDefault();
     const formErrors = validate();
     if (Object.keys(formErrors).length === 0) {
-      console.log('Form data:', formData);
+      console.log("Form data:", formData);
       try {
-        const res = await axios.post('https://js2-ecommerce-api.vercel.app/api/messages', formData, {
-          headers: { 'Content-Type': 'application/json' },
-        });
+        const res = await axios.post(
+          "https://js2-ecommerce-api.vercel.app/api/messages",
+          formData,
+          {
+            headers: { "Content-Type": "application/json" },
+          }
+        );
         console.log(res);
         if (res.status === 200) {
-          setFormData({ name: '', email: '', message: '' });
+          setFormData({ name: "", email: "", message: "" });
           setErrors({});
           setModalVisible(true);
-          console.log(res.data)
+          console.log(res.data);
         } else {
-          console.error('Failed to send message');
+          console.error("Failed to send message");
         }
       } catch (error) {
-        console.error('Error sending message:', error);
+        console.error("Error sending message:", error);
       }
     } else {
       setErrors(formErrors);
@@ -96,7 +100,9 @@ const ContactForm = () => {
             ></textarea>
             {errors.message && <span className="error">{errors.message}</span>}
           </div>
-          <button type="submit" className="submit-btn">Submit</button>
+          <button type="submit" className="submit-btn">
+            Submit
+          </button>
         </form>
       </div>
 
@@ -108,7 +114,6 @@ const ContactForm = () => {
         </Modal>
       )}
     </div>
-   
   );
 };
 

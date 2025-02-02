@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import  productsSlice from "./features/products/productsSlice";
-import shoppingCartSlice  from "./shoppingcart/shoppingCartSlice";
+import productsSlice from "./features/products/productsSlice";
+import shoppingCartSlice from "./shoppingcart/shoppingCartSlice";
 import authReducer from "./features/auth/authSlice";
-import orderReducer from './features/orders/orderSlice';
+import orderReducer from "./features/orders/orderSlice";
 
 export const store = configureStore({
   reducer: {
@@ -10,5 +10,5 @@ export const store = configureStore({
     productList: productsSlice,
     shoppingCart: shoppingCartSlice,
     orders: orderReducer,
-  }
-})
+  },
+});

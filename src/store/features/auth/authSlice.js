@@ -1,56 +1,80 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
 // Async thunk for user registration
-export const register = createAsyncThunk('auth/register', async (userData, { rejectWithValue }) => {
-  try {
-    console.log('Registering with data:', userData); 
-    const response = await axios.post('https://js2-ecommerce-api.vercel.app/api/auth/register', userData);
-    console.log('Registration successful:', response.data);
+export const register = createAsyncThunk(
+  "auth/register",
+  async (userData, { rejectWithValue }) => {
+    try {
+      console.log("Registering with data:", userData);
+      const response = await axios.post(
+        "https://js2-ecommerce-api.vercel.app/api/auth/register",
+        userData
+      );
+      console.log("Registration successful:", response.data);
 
-    if(response.status === 201){
-      // store the token in local storage
-      localStorage.setItem('token', response.data.token);
-      return { message: "Registration successful", token: response.data.token, email: userData.email};
+      if (response.status === 201) {
+        // store the token in local storage
+        localStorage.setItem("token", response.data.token);
+        return {
+          message: "Registration successful",
+          token: response.data.token,
+          email: userData.email,
+        };
+      }
+    } catch (error) {
+      console.error("Registration error:", error.response.data); // Log the error response
+      return rejectWithValue(error.response.data); // Return the error response on failure
     }
-  } catch (error) {
-    console.error('Registration error:', error.response.data); // Log the error response
-    return rejectWithValue(error.response.data); // Return the error response on failure
   }
-});
+);
 
 // Async thunk for user login
-export const login = createAsyncThunk('auth/login', async (userData, { rejectWithValue }) => {
-  try {
-    console.log('Logging in with data:', userData); // Log the user data
-    const response = await axios.post('https://js2-ecommerce-api.vercel.app/api/auth/login', {
-      email: userData.email,
-      password: userData.password,
-    });
+export const login = createAsyncThunk(
+  "auth/login",
+  async (userData, { rejectWithValue }) => {
+    try {
+      console.log("Logging in with data:", userData); // Log the user data
+      const response = await axios.post(
+        "https://js2-ecommerce-api.vercel.app/api/auth/login",
+        {
+          email: userData.email,
+          password: userData.password,
+        }
+      );
 
-    // store the token in local storage
-    localStorage.setItem('token', response.data.token);
-    console.log('Login successful:',response.data.token);
-    return { message: "Login successful", token: response.data.token, email: userData.email };
-
-  } catch (error) {
-    console.error('Login error:', error.response ? error.response.data : error.message);
-    return rejectWithValue(error.response ? error.response.data : 'Login failed'); // Return the error response on failure
+      // store the token in local storage
+      localStorage.setItem("token", response.data.token);
+      console.log("Login successful:", response.data.token);
+      return {
+        message: "Login successful",
+        token: response.data.token,
+        email: userData.email,
+      };
+    } catch (error) {
+      console.error(
+        "Login error:",
+        error.response ? error.response.data : error.message
+      );
+      return rejectWithValue(
+        error.response ? error.response.data : "Login failed"
+      ); // Return the error response on failure
+    }
   }
-});
+);
 
 const initialState = {
-    email: null,
-    token: localStorage.getItem('token'),
-    error: null,
-    loading: false,
-    message: null,
-    success: false,
-}
+  email: null,
+  token: localStorage.getItem("token"),
+  error: null,
+  loading: false,
+  message: null,
+  success: false,
+};
 
 // Create the auth slice
 const authSlice = createSlice({
-  name: 'auth',
+  name: "auth",
   initialState,
   reducers: {
     clearError: (state) => {
@@ -59,8 +83,8 @@ const authSlice = createSlice({
     logout: (state) => {
       state.email = null; // Clear email
       state.token = null; // Clear token
-      localStorage.removeItem('token'); // Remove token from local storage
-    }, 
+      localStorage.removeItem("token"); // Remove token from local storage
+    },
   },
   extraReducers: (builder) => {
     builder
